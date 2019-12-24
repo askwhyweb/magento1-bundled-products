@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <OrviSoft_BundledProducts>
+      <version>0.1.0</version>
+    </OrviSoft_BundledProducts>
+  </modules>
+  <global>
+    <helpers>
+      <bundledproducts>
+        <class>OrviSoft_BundledProducts_Helper</class>
+      </bundledproducts>
+    </helpers>
+  </global>
+</config> 
