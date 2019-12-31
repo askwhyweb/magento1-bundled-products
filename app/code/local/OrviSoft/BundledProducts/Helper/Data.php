@@ -11,7 +11,7 @@ class OrviSoft_BundledProducts_Helper_Data extends Mage_Core_Helper_Abstract
         $_bundles = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('sku', array('in' => $bundles))->load();
         $output = array();
         foreach($_bundles as $bundle){
-            $_bundle = Mage:getModel('catalog/product')->load($bundle->getId());
+            $_bundle = Mage::getModel('catalog/product')->load($bundle->getId());
             $id = $bundle->getId();
             $parentProducts = $_bundle->getData('parent_products');
             if(!strlen($parentProducts)){
@@ -21,7 +21,7 @@ class OrviSoft_BundledProducts_Helper_Data extends Mage_Core_Helper_Abstract
             $parentProducts = explode(",", $parentProducts);
             $parentProducts = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('sku', array('in' => $parentProducts))->load();
             foreach($parentProducts as $parent){
-                $output[$id][] = $$parent->getId();
+                $output[$id][] = $parent->getId();
             }
         }
         return $output;
