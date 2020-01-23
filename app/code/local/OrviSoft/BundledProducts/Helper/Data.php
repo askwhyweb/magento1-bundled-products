@@ -19,9 +19,12 @@ class OrviSoft_BundledProducts_Helper_Data extends Mage_Core_Helper_Abstract
                 continue 1;
             }
             $parentProducts = explode(",", $parentProducts);
-            $parentProducts = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('sku', array('in' => $parentProducts))->load();
-            foreach($parentProducts as $parent){
-                $output[$id][] = $parent->getId();
+            
+            foreach($parentProducts as $parnt){
+                $parnt = Mage::getResourceModel('catalog/product_collection')->addAttributeToFilter('sku', $parnt)->load();
+                foreach($parnt as $parent):
+                    $output[$id][] = $parent->getId();
+                endforeach;
             }
         }
         return $output;
